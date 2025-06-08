@@ -1,0 +1,176 @@
+---
+import "./../styles/global.css";
+const {
+        type,
+        id,
+        name = id,
+        label,
+        autocomplete,
+        inputmode = "text",
+        required = true,
+        error = "",
+        value = "",
+        ...rest
+    } = Astro.props;
+    const isRequired = required === true || required === "true";
+---
+
+<div class={`storyblok-form-${id}`}>
+    {
+    type === "textarea" ? (
+    <textarea
+        id={id}
+        name={name}
+        required={isRequired}
+        aria-required={isRequired}
+        {...rest}
+    >{value}</textarea>
+    ) : (
+    <input
+        id={id}
+        name={name}
+        type={type}
+        value={value}
+        required={isRequired}
+        aria-required={isRequired}
+        autocomplete={autocomplete}
+        inputmode={inputmode}
+        {...rest}
+    />
+    )
+    }
+    <label for={id} class:list={{
+        "textarea": type === "textarea"
+    }}>
+        {label}
+        {
+            isRequired &&
+            <span aria-hidden="true">*</span>
+            <span class="visually-hidden">(required)</span>
+        }
+    </label>
+</div>
+
+<style>
+    div {
+        position: relative;
+        flex: 1 1 112px;
+        display: grid;
+        gap: var(--storyblok-job-test-form-fields-gap);
+    }
+    input,
+    textarea {
+        border: 1px solid var(--storyblok-job-test-form-fields-border-color);
+        font-size: var(--storyblok-job-test-form-font-size);
+        font-weight: 400;
+        background-color: var(--storyblok-job-test-form-background-input);
+        border-radius: var(--storyblok-job-test-form-input-radius);
+        padding: 21px 15px 2px;
+        position: relative;
+        width: 100%;
+        color: var(--storyblok-job-test-text-color);
+        &::placeholder {
+            color: var(--storyblok-job-test-text-color);
+        }
+    }
+    input {
+        line-height: var(--storyblok-job-test-line-height-input);
+        height: 54px;
+    }
+
+    textarea {
+        min-height: 10lh;
+        order: 2;
+    }
+
+    label {
+        font-weight: 400;
+        left: 15px;
+        pointer-events: none;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: all 0.1s linear;
+        &.textarea {
+            order: 1;
+            position: relative;
+            top: initial;
+            left: initial;
+            transform: initial;
+            width: fit-content;
+            color: var(--storyblok-job-test-color-canon-text);
+        }
+    }
+
+    input:focus ~ label,
+    [data-label-float="true"] ~ label {
+        font-size: var(--storyblok-job-test-form-font-size-small-label);
+        line-height: var(--storyblok-job-test-line-height);
+        top: 16px;
+    }
+
+    div:has(~ div) input {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+    }
+    div:has(~ div) ~ div input {
+        border-left-color: var(--storyblok-job-test-form-background);
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+    }
+    input:user-invalid,
+    textarea:user-invalid {
+        background-color: var(--storyblok-job-test-form-error-background-color);
+        box-shadow: 0 0 3px 0 color-mix(in lab, var(--storyblok-job-test-form-error-color), 10% white);
+        border-color: var(--storyblok-job-test-form-error-color);
+    }
+    :has(:user-invalid) label {
+        color: darkred;
+    }
+    @container fieldset (max-width: 223px) {
+        div:has(~ div) input {
+            border-bottom-right-radius: 0;
+            border-top-right-radius: var(--storyblok-job-test-form-radius);
+            border-bottom-left-radius: 0;
+        }
+        div:has(~ div) ~ div input {
+            border-left-color: transparent;
+            border-top-color: var(--storyblok-job-test-form-background);
+            border-bottom-left-radius: var(--storyblok-job-test-form-radius);
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    }
+    input:focus,
+    textarea:focus {
+        outline-offset: -2px;
+        outline-color: transparent;
+        border-color: var(--storyblok-job-test-form-accent-color);
+    }
+
+    input::after {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        content: "";
+        position: absolute;
+        transform: scaleX(0);
+        transition: transform .2s cubic-bezier(0,0,.2,1) 0ms;
+        border-bottom: 2px solid var(--storyblok-job-test-form-accent-color);
+        pointer-events: none;
+    }
+    input:focus::after {
+        content: " ";
+        box-shadow: inset 0 -2px 0 var(--storyblok-job-test-form-accent-color);
+        border-bottom: none;
+        transform: scaleX(1);
+    }
+</style>
+
+<script>
+    document.querySelectorAll("input").forEach((field) => {
+        field.addEventListener("input", () => {
+            field.dataset.labelFloat = field.value !== "";
+        });
+    });
+</script>

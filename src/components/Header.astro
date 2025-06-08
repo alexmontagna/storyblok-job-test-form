@@ -1,0 +1,39 @@
+---
+import SettingsButton from "./SettingsButton.astro";
+---
+
+<header>
+    <div class="pagetitle">Storyblok's Job Test</div>
+    <nav class="settings">
+        <SettingsButton />
+    </nav>
+</header>
+
+<style>
+    header {
+        grid-column: 1 / -1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        min-height: 5rem;
+        padding-block: var(--storyblok-job-test-header-padding-block);
+        padding-inline: var(--storyblok-job-test-header-padding-inline);
+        background-color: var(--storyblok-job-test-header-background);
+        border-radius: 0 0 100vh 0;
+        color: var(--storyblok-job-test-header-color-items);
+    }
+    .pagetitle {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    .pagetitle::after {
+        content: " ❤️";
+    }
+
+    @media (prefers-color-scheme: dark) {
+        .pagetitle::after {
+            content: " 🤍";
+        }
+    }
+</style>

@@ -1,0 +1,30 @@
+---
+const { type = "button", label, ...rest } = Astro.props
+---
+<button
+    type={type}
+    {...rest}
+>
+    {label}
+</button>
+<style>
+    button {
+        min-width: 148px;
+        width: fit-content;
+        min-height: 42px;
+        cursor: pointer;
+        padding: 9px 21px;
+        border-radius: var(--storyblok-job-test-form-input-radius);
+        border: 0;
+        color: white;
+        background-color: var(--storyblok-job-test-form-accent-color);
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+        &:hover {
+            background-color: var(--storyblok-job-test-form-accent-color-hover);
+        }
+        &:focus-visible {
+            outline: 3px solid var(--storyblok-job-test-form-accent-color);
+            outline-offset: 4px;
+        }
+    }
+</style>

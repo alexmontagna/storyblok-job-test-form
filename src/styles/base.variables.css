@@ -1,0 +1,27 @@
+@layer base.variables {
+    :root {
+        --storyblok-job-test-font-size: 16px;
+        --storyblok-job-test-primary-font-family: "Roboto", sans-serif;
+        --storyblok-job-test-primary-font-weight: 400;
+        --storyblok-job-test-line-height: 1.25rem;
+        --storyblok-job-test-line-height-input: 1.5rem;
+        --storyblok-job-test-main-margin: 80px auto 0;
+        --storyblok-job-test-main-inline-max-size: 1280px;
+        --storyblok-job-test-main-inline-padding: 24px;
+        --storyblok-job-test-transition-timing: 0.2s;
+        --storyblok-job-test-transition-timing-faster: 0.1s;
+        --storyblok-job-test-header-padding-block: 1.2rem;
+        --storyblok-job-test-header-padding-inline: 2.4rem;
+        --storyblok-job-test-header-color-items: white;
+        --storyblok-job-test-form-max-inline-size: 500px;
+        --storyblok-job-test-form-gap: 1.25rem;
+        --storyblok-job-test-form-fields-gap: 0.5rem;
+        --storyblok-job-test-form-font-size: 0.875rem;
+        --storyblok-job-test-form-font-size-small-label: 12px;
+        --storyblok-job-test-form-padding: 2.5rem;
+        --storyblok-job-test-form-radius: 10px;
+        --storyblok-job-test-form-input-radius: 8px;
+        --storyblok-job-test-form-input-padding: 7px 14px 7px 15px;
+        --storyblock-job-test-standard-shadow: 2px 2px 5px 2px var(--storyblock-job-test-standard-shadow-color);
+    }
+}

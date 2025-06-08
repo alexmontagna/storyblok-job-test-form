@@ -1,0 +1,52 @@
+<footer id="footer">
+    <div class="author">
+        <a href="https://www.alexmontagna.it" target="_blank">
+            alex montagna
+            <span class="visually-hidden">(opens in a new window)</span>
+        </a>
+    </div>
+</foote>
+
+<style>
+    footer {
+        grid-column: 1 / -1;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        gap: 1rem;
+        min-height: 5rem;
+        padding-block: var(--storyblok-job-test-header-padding-block);
+        padding-inline: var(--storyblok-job-test-header-padding-inline);
+        background-color: var(--storyblok-job-test-header-background);
+        border-radius: 100vh 0 0 0;
+        color: var(--storyblok-job-test-header-color-items);
+    }
+    a {
+        color: var(--storyblok-job-test-header-color-items);
+        text-decoration: none;
+        display: inline-block;
+        border-radius: var(--storyblok-job-test-form-radius);
+        &:hover {
+            text-decoration: underline;
+            text-decoration-style: wavy;
+        }
+        &:focus {
+            outline-style: dotted;
+            outline-width: 2px;
+            outline-color: white;
+            outline-offset: 6px;
+        }
+    }
+    .pagetitle, .author, .settings {
+        /* background-color: yellow; */
+    }
+    .pagetitle::after {
+        content: " ❤️";
+    }
+
+    @media (prefers-color-scheme: dark) {
+        .pagetitle::after {
+            content: " 🤍";
+        }
+    }
+</style>

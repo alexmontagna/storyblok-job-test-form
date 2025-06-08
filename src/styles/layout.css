@@ -1,0 +1,27 @@
+@layer layout {
+    #main {
+        margin: var(--storyblok-job-test-main-margin);
+        max-inline-size: var(--storyblok-job-test-main-inline-max-size);
+        /* padding-inline: var(--storyblok-job-test-main-inline-padding); */
+        position: relative;
+    }
+    body {
+        display: grid;
+        grid-template-columns: 
+        [full-width-start]
+        1rem
+        [breakout-start]
+        1rem
+        [content-start]
+        1fr
+        [content-end]
+        1rem
+        [breakout-end]
+        1rem
+        [full-width-end];
+        & > * {
+            grid-column: content;
+        }
+        overflow-x: hidden;
+    }
+}

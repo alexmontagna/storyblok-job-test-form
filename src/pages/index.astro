@@ -1,16 +1,20 @@
 ---
-
+import ContactForm from "../components/ContactForm.astro";
+import TextGradient from "../components/TextGradient.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+    <h1><TextGradient start={'var(--storyblok-job-test-form-accent-color)'} end={'var(--storyblok-job-test-form-accent-color-hover)'}>Contact Form</TextGradient></h1>
+    <ContactForm />
+</Layout>
+
+<style is:global>
+    h1 {
+        text-align: center;
+        margin-block-end: 1rem;
+    }
+    form {
+        margin-block-end: 4rem;
+    }
+</style>

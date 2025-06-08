@@ -1,0 +1,35 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'button'> {
+    opens: string;
+}
+
+const { opens, ...rest } = Astro.props as Props
+---
+<button type="button" data-target={opens} {...rest}>
+    <slot />
+</button>
+
+<style>
+    button {
+        min-inline-size: 22px;
+    }
+</style>
+
+<script>
+    const button = document.querySelector('button');
+    const targetSelector = button?.dataset.target;
+    if (typeof targetSelector === 'string') {
+        const dialog = document.querySelector(targetSelector);
+        if (dialog instanceof HTMLDialogElement) {
+            button?.addEventListener('click', () => {
+                dialog.showModal();
+            });
+        } else {
+            console.error(`Element "${targetSelector}" is not a <dialog> or not found.`);
+        }
+    } else {
+        console.error('No target selector found on button.');
+    }
+</script>

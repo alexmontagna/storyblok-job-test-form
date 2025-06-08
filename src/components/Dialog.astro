@@ -1,0 +1,51 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+interface Props extends HTMLAttributes<'dialog'> {
+    opens: string;
+    class?: string;
+}
+const { opens, ...rest } = Astro.props as Props;
+---
+<dialog closedby="any" id={opens} {...rest}>
+    <slot />
+</dialog>
+<style>
+    dialog {
+        --dialog-transition-duration: 0.25s;
+        color: var(--storyblok-job-test-text-color);
+        background-color: var(--storyblok-job-test-background-color);
+        display: none;
+        opacity: 0;
+        translate: 0 25vh;
+        transition-property: overlay display opacity;
+        transition-duration: var(--dialog-transition-duration);
+        transition-behavior: allow-discrete;
+        margin: auto;
+        padding: 1rem;
+        border-radius: var(--storyblok-job-test-form-radius);
+        &[open] {
+            display: block;
+            opacity: 1;
+            translate: 0 0;
+            &::backdrop {
+                opacity: 0.75;
+            }
+        }
+        &::backdrop {
+            transition-property: opacity display overlay;
+            transition-duration: var(--dialog-transition-duration);
+            transition-behavior: allow-discrete;
+            opacity: 0;
+            background-image: linear-gradient(45deg, var(--storyblok-job-test-form-accent-color), var(--storyblok-job-test-form-accent-color-hover));
+        }
+    }
+    @starting-style {
+        dialog[open] {
+            opacity: 0;
+            translate: 0 -25vh;
+        }
+        dialog[open]::backdrop {
+            opacity: 0;
+        }
+    }
+</style>

@@ -1,0 +1,81 @@
+/*
+--storyblok-job-test-DARKMODE-
+--storyblok-job-test-LIGHTMODE-
+*/
+
+@layer colors {
+    :root {
+        --storyblok-job-test-background-color: white;
+        --storyblok-job-test-text-color: rgba(116, 119, 126, 1);
+        --storyblok-job-test-select-color: white;
+        --storyblok-job-test-select-background-color: var(--storyblok-job-test-form-accent-color);
+        --storyblok-job-test-text-gradient: linear-gradient(90deg, var(--storyblok-job-test-form-accent-color) 0%, var(--storyblok-job-test-form-accent-color-hover) 100%);
+        --storyblok-job-test-form-background: rgba(241, 236, 246, 1);
+        --storyblok-job-test-form-background-input: white;
+        --storyblok-job-test-form-fields-border-color: transparent;
+        --storyblok-job-test-form-error-color: darkred;
+        --storyblok-job-test-form-accent-color: rgba(115, 70, 123, 1);
+        --storyblok-job-test-form-accent-color-hover: rgba(115, 70, 123, 0.7);
+        --storyblock-job-test-standard-shadow-color: rgba(115, 70, 133, 0.2);
+    }
+    :root[data-theme="light"] {
+        --storyblok-job-test-background-color: white;
+        --storyblok-job-test-text-color: rgba(116, 119, 126, 1);
+        --storyblok-job-test-select-color: white;
+        --storyblok-job-test-select-background-color: var(--storyblok-job-test-form-accent-color);
+        --storyblok-job-test-text-gradient: linear-gradient(90deg, var(--storyblok-job-test-form-accent-color) 0%, var(--storyblok-job-test-form-accent-color-hover) 100%);
+        --storyblok-job-test-form-background: rgba(241, 236, 246, 1);
+        --storyblok-job-test-form-background-input: white;
+        --storyblok-job-test-form-fields-border-color: transparent;
+        --storyblok-job-test-form-error-color: darkred;
+        --storyblok-job-test-form-accent-color: rgba(115, 70, 123, 1);
+        --storyblok-job-test-form-accent-color-hover: rgba(115, 70, 123, 0.7);
+        --storyblock-job-test-standard-shadow-color: rgba(115, 70, 133, 0.2);
+    }
+    @media screen and (prefers-color-scheme: light) {
+        :root[data-theme="dark"] {
+            --storyblok-job-test-background-color: rgb(80, 32, 89);
+            --storyblok-job-test-text-color: rgba(116, 119, 126, 1);
+            --storyblok-job-test-select-color: white;
+            --storyblok-job-test-select-background-color: var(--storyblok-job-test-form-accent-color);
+            --storyblok-job-test-text-gradient: linear-gradient(90deg, var(--storyblok-job-test-form-accent-color) 0%, var(--storyblok-job-test-form-accent-color-hover) 100%);
+            --storyblok-job-test-form-background: rgba(241, 236, 246, 1);
+            --storyblok-job-test-form-background-input: white;
+            --storyblok-job-test-form-fields-border-color: transparent;
+            --storyblok-job-test-form-error-color: darkred;
+            --storyblok-job-test-form-accent-color: rgba(115, 70, 123, 1);
+            --storyblok-job-test-form-accent-color-hover: rgba(115, 70, 123, 0.7);
+            --storyblock-job-test-standard-shadow-color: rgba(115, 70, 133, 0.2);
+        }
+    }
+    @media screen and (prefers-color-scheme: dark) {
+        :root {
+            --storyblok-job-test-background-color: rgb(80, 32, 89);
+            --storyblok-job-test-text-color: rgba(116, 119, 126, 1);
+            --storyblok-job-test-select-color: white;
+            --storyblok-job-test-select-background-color: var(--storyblok-job-test-form-accent-color);
+            --storyblok-job-test-text-gradient: linear-gradient(90deg, var(--storyblok-job-test-form-accent-color) 0%, var(--storyblok-job-test-form-accent-color-hover) 100%);
+            --storyblok-job-test-form-background: rgba(241, 236, 246, 1);
+            --storyblok-job-test-form-background-input: white;
+            --storyblok-job-test-form-fields-border-color: transparent;
+            --storyblok-job-test-form-error-color: darkred;
+            --storyblok-job-test-form-accent-color: rgba(115, 70, 123, 1);
+            --storyblok-job-test-form-accent-color-hover: rgba(115, 70, 123, 0.7);
+            --storyblock-job-test-standard-shadow-color: rgba(115, 70, 133, 0.2);
+        }
+        :root[data-theme="light"] {
+            --storyblok-job-test-background-color: white;
+            --storyblok-job-test-text-color: rgba(116, 119, 126, 1);
+            --storyblok-job-test-select-color: white;
+            --storyblok-job-test-select-background-color: var(--storyblok-job-test-form-accent-color);
+            --storyblok-job-test-text-gradient: linear-gradient(90deg, var(--storyblok-job-test-form-accent-color) 0%, var(--storyblok-job-test-form-accent-color-hover) 100%);
+            --storyblok-job-test-form-background: rgba(241, 236, 246, 1);
+            --storyblok-job-test-form-background-input: white;
+            --storyblok-job-test-form-fields-border-color: transparent;
+            --storyblok-job-test-form-error-color: darkred;
+            --storyblok-job-test-form-accent-color: rgba(115, 70, 123, 1);
+            --storyblok-job-test-form-accent-color-hover: rgba(115, 70, 123, 0.7);
+            --storyblock-job-test-standard-shadow-color: rgba(115, 70, 133, 0.2);
+        }
+    }
+}

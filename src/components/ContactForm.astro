@@ -1,0 +1,177 @@
+---
+import Input from "../components/Input.astro";
+import Button from "./Button.astro";
+---
+
+<form action="https://alexmontagna.it" autocomplete="on" id="contact-form">
+    <a href="#footer" class="skip-link">Skip to footer</a>
+    <h2 class="visually-hidden">Contact Info</h2>
+    <fieldset>
+        <legend class="visually-hidden">Your Name</legend>
+        <Input type="text" id="first_name" label="First name" autocomplete="given-name" pattern=".*[a-zA-Z].*" title="Please enter a valid first/given name (must contain at least one letter)" />
+        <Input type="text" id="last_name" label="Last name" autocomplete="family-name" pattern=".*[a-zA-Z].*" title="Please enter a valid last name (must contain at least one letter)" />
+    </fieldset>
+    <fieldset>
+        <Input
+        type="email"
+        id="email"
+        label="Work Email"
+        autocomplete="email"
+        inputmode="email"
+        title="Please insert a valid email"
+        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+        />
+    </fieldset>
+    <fieldset>
+        <Input type="textarea" id="message" label="Message" placeholder="Enter your message" />
+    </fieldset>
+    <div>
+        <div id="response-message"></div>
+        <p>
+            For information about our privacy practices and commitment to protecting your privacy, please review our <a href="https://www.storyblok.com/legal/privacy-policy" target="_blank"
+                >Privacy Policy</a
+            >.
+        </p>
+    </div>
+    <Button type="submit" label="Send Message" />
+</form>
+
+<style>
+    form {
+        inline-size: clamp(12rem, 100%, var(--storyblok-job-test-form-max-inline-size));
+        margin-inline: auto;
+        background-color: var(--storyblok-job-test-form-background);
+        padding: var(--storyblok-job-test-form-padding);
+        border-radius: var(--storyblok-job-test-form-radius);
+        display: grid;
+        gap: var(--storyblok-job-test-form-gap);
+        font-size: var(--storyblok-job-test-form-font-size);
+        color: var(--storyblok-job-test-text-color);
+        position: relative;
+    }
+
+    fieldset {
+        display: flex;
+        flex-wrap: wrap;
+        container-name: fieldset;
+        container-type: inline-size;
+        &:has(textarea) {
+            flex-direction: column;
+            gap: var(--storyblok-job-test-form-fields-gap);
+        }
+        z-index: 1;
+    }
+
+    form a {
+        color: var(--storyblok-job-test-form-accent-color);
+        &:hover {
+            color: var(--storyblok-job-test-form-accent-color-hover);
+        }
+        &:focus-visible {
+            color: var(--storyblok-job-test-form-accent-color-hover);
+            outline-color: var(--storyblok-job-test-form-accent-color-hover);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+    }
+
+    p {
+        color: var(--storyblok-job-test-text-color);
+    }
+    #response-message {
+        background-color: color-mix(in lab, var(--storyblok-job-test-form-accent-color), white 80%);
+        color: var(--storyblok-job-test-form-accent-color);
+        font-weight: bold;
+        min-width: 1rem;
+        min-height: 1rem;
+        margin-block-end: 1rem;
+        padding: 0.5rem 1.2rem;
+        border-radius: var(--storyblok-job-test-form-input-radius);
+        border: 1px solid var(--storyblok-job-test-form-accent-color);
+        &:empty {
+            display: none;
+        }
+    }
+</style>
+
+<script>
+    const form = document.getElementById("contact-form");
+    const responseMessage = document.getElementById("response-message");
+
+    if (form instanceof HTMLFormElement && responseMessage instanceof HTMLElement) {
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            document.querySelectorAll(".validation-error").forEach((el) => el.remove());
+
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            let isValid = true;
+
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            const fields = [
+                { id: "first_name", message: "Please provide a valid first name." },
+                { id: "last_name", message: "Please provide a valid last name." },
+                { id: "email", message: "Please provide a valid email address." },
+                { id: "message", message: "Please enter your message." },
+            ];
+
+            fields.forEach(({ id, message }) => {
+                const field = form.elements[id];
+                const value = field.value.trim();
+
+                if (id === "email") {
+                    if (!emailPattern.test(value)) {
+                        isValid = false;
+                        const errorEl = document.createElement("div");
+                        errorEl.className = "validation-error";
+                        errorEl.style.color = "darkred";
+                        errorEl.style.fontSize = "0.85rem";
+                        errorEl.textContent = message;
+                        field.insertAdjacentElement("afterend", errorEl);
+                    }
+                    return;
+                }
+
+                if (!value) {
+                    isValid = false;
+                    const errorEl = document.createElement("div");
+                    errorEl.className = "validation-error";
+                    errorEl.style.color = "darkred";
+                    errorEl.style.fontSize = "0.85rem";
+                    errorEl.textContent = message;
+                    field.insertAdjacentElement("afterend", errorEl);
+                }
+            });
+
+            if (!isValid) {
+                responseMessage.textContent = "Please correct the highlighted errors.";
+                return;
+            }
+
+            const response = await fetch("/api/submit", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            });
+
+            let result;
+
+            try {
+                result = await response.json();
+            } catch (e) {
+                console.error("Response parsing error:", e);
+                responseMessage.textContent = "Unexpected response from server.";
+                return;
+            }
+
+            responseMessage.textContent = result.message;
+
+            if (result.success) {
+                form.reset();
+            }
+        });
+    }
+</script>

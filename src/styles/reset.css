@@ -1,0 +1,65 @@
+@layer reset {
+
+    *,
+    *::before,
+    *::after {
+        margin    : 0;
+        padding   : 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        hanging-punctuation     : first last;
+        font-family             : 'Roboto', system-ui, sans-serif;
+        line-height             : 1.6;
+        scrollbar-gutter        : stable;
+        -moz-text-size-adjust   : none;
+        -webkit-text-size-adjust: none;
+        text-size-adjust        : none;
+        interpolate-size        : allow-keywords;
+    }
+
+    fieldset {
+        all: unset;
+    }
+
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+        font: inherit;
+        line-height: inherit;
+        color: inherit;
+    }
+
+    button {
+        border: 0;
+        background-color: transparent;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        line-height: 1.2;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    blockquote {
+        text-wrap  : balance;
+    }
+
+    p,
+    li,
+    figcaption {
+        text-wrap : pretty;
+        text-align: left;
+        max-width : 65ch;
+    }
+}

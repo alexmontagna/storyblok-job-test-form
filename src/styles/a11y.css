@@ -1,0 +1,66 @@
+.a11y:root {
+    & * {
+        transition         : none;
+        /* background-color: sienna; */
+    }
+}
+
+.visually-hidden:not(:focus, :active) {
+    border     : 0;
+    height     : 1px;
+    margin     : -1px;
+    overflow   : hidden;
+    padding    : 0;
+    position   : absolute;
+    white-space: nowrap;
+    width      : 1px;
+    clip       : rect(0 0 0 0);
+    clip-path  : inset(50%);
+}
+
+.skip-link {
+    position       : absolute;
+    top            : -4000px;
+    left           : 6px;
+    background     : #000 !important;
+    color          : #fff !important;
+    padding        : 0.5rem 1rem;
+    z-index        : 100;
+    text-decoration: none;
+    transition     : scale 0.3s ease;
+    font-size      : 1.2rem;
+    outline        : 2px solid #000 !important;
+    scale: 0;
+}
+
+.skip-link:focus {
+    top: 0;
+    scale: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition               : none !important;
+        animation-duration       : 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration      : 0.01ms !important;
+        scroll-behavior          : auto !important;
+    }
+}
+
+*:focus-visible {
+    outline: 2px solid currentColor;
+}
+
+/* Fixing bad contrast of colors if user uses 1Password automatic filling */
+html:has([data-com-onepassword-filled="light"]) {
+    --onepassword-text-color: rgb(33, 96, 33);
+    & input[data-com-onepassword-filled="light"] {
+        color: var(--onepassword-text-color);
+        & + label {
+            color: var(--onepassword-text-color);
+        }
+    }
+}

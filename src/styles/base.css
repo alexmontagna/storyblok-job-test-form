@@ -1,0 +1,25 @@
+@layer base {
+    html {
+        scroll-behavior   : smooth;
+        font-size: var(--storyblok-job-test-font-size);
+        color-scheme: light dark;
+        forced-color-adjust: none;
+    }
+    body {
+        font-family: var(--storyblok-job-test-primary-font-family);
+        font-weight: var(--storyblok-job-test-primary-font-weight);
+        -webkit-font-smoothing: antialiased;
+        background-color: var(--storyblok-job-test-background-color);
+        color: var(--storyblok-job-test-text-color);
+        line-height: var(--storyblok-job-test-line-height);
+    }
+    ::selection {
+        color: var(--storyblok-job-test-select-color);
+        background-color: var(--storyblok-job-test-select-background-color)
+    }
+    @media (prefers-reduced-motion: no-preference) {
+        :has(:target) {
+            scroll-behavior   : smooth;
+        }
+    }
+}

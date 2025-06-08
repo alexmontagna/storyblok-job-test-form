@@ -1,0 +1,155 @@
+@layer colors {
+    /*
+        *** Color Dashboard ***
+        *** Define all LIGHTMODE and DARKMODE variables ***
+    */
+    :root {
+        /* Canon color */
+        --storyblok-job-test-color-canon-rgba: rgba(115, 70, 123, 1);
+        --storyblok-job-test-color-canon-oklch: oklch(0.4673 0.0984 321.38);
+        --storyblok-job-test-color-canon-hsl: hsl(291, 27%, 38%);
+        --storyblok-job-test-color-canon-hex: #73477a;
+        
+        --storyblok-job-test-color-canon: var(--storyblok-job-test-color-canon-rgba);
+        --storyblok-job-test-color-canon-light: color-mix(in lab, var(--storyblok-job-test-color-canon) 30%, white 70%);
+        --storyblok-job-test-color-canon-dark: color-mix(in lab, var(--storyblok-job-test-color-canon) 30%, black 70%);
+        --storyblok-job-test-color-canon-text: oklch(0 0.0984 321.38);
+        
+        /* Light mode colors */
+        --storyblok-job-test-LIGHTMODE-background-color: white;
+        --storyblok-job-test-LIGHTMODE-text-color: rgba(116, 119, 126, 1);
+        --storyblok-job-test-LIGHTMODE-textlink-color: color-mix(in lab, var(--storyblok-job-test-color-canon-dark) 80%, black 20%);
+        --storyblok-job-test-LIGHTMODE-textlinkhover-color: color-mix(in lab, var(--storyblok-job-test-color-canon-dark) 60%, black 40%);
+        --storyblok-job-test-LIGHTMODE-select-color: var(--storyblok-job-test-color-canon-light);
+        --storyblok-job-test-LIGHTMODE-select-background-color: var(--storyblok-job-test-color-canon-dark);
+        --storyblok-job-test-LIGHTMODE-form-accent-color: var(--storyblok-job-test-color-canon);
+        --storyblok-job-test-LIGHTMODE-form-accent-color-hover: color-mix(in lab, var(--storyblok-job-test-color-canon) 90%, white 20%);
+        --storyblok-job-test-LIGHTMODE-form-background: color-mix(in lab, var(--storyblok-job-test-color-canon) 10%, white 90%);
+        --storyblok-job-test-LIGHTMODE-form-background-input: white;
+        --storyblok-job-test-LIGHTMODE-form-fields-border-color: transparent;
+        --storyblok-job-test-LIGHTMODE-form-error-color: darkred;
+        --storyblok-job-test-LIGHTMODE-form-error-background-color: color-mix(in lab, var(--storyblok-job-test-form-error-color), 85% white);
+        --storyblok-job-test-LIGHTMODE-standard-shadow-color: rgba(115, 70, 133, 0.2);
+        --storyblok-job-test-LIGHTMODE-text-gradient: linear-gradient(90deg, var(--storyblok-job-test-LIGHTMODE-form-accent-color) 0%, var(--storyblok-job-test-LIGHTMODE-form-accent-color-hover) 100%);
+        --storyblok-job-test-LIGHTMODE-color-canon-text: oklch(from var(--storyblok-job-test-color-canon-text) calc(alpha + 0.8) c h / calc(alpha - 0.1));
+
+        /* Dark mode colors */
+        --storyblok-job-test-DARKMODE-color-light: color-mix(in lab, var(--storyblok-job-test-color-canon) 30%, white 70%);
+        --storyblok-job-test-DARKMODE-color-dark: color-mix(in lab, var(--storyblok-job-test-color-canon) 40%, black 60%);
+        --storyblok-job-test-DARKMODE-background-color: rgb(63, 23, 70);
+        --storyblok-job-test-DARKMODE-text-color: var(--storyblok-job-test-color-canon-light);
+        --storyblok-job-test-DARKMODE-textlink-color: color-mix(in lab, var(--storyblok-job-test-color-canon-light) 80%, white 20%);
+        --storyblok-job-test-DARKMODE-textlinkhover-color: color-mix(in lab, var(--storyblok-job-test-color-canon-light) 60%, white 40%);
+        --storyblok-job-test-DARKMODE-select-color: white;
+        --storyblok-job-test-DARKMODE-select-background-color: var(--storyblok-job-test-color-canon);
+        --storyblok-job-test-DARKMODE-form-accent-color: rgb(155, 118, 162);
+        --storyblok-job-test-DARKMODE-form-accent-color-hover: rgba(230, 214, 232, 0.7);
+        --storyblok-job-test-DARKMODE-form-background: rgb(101, 59, 145);
+        --storyblok-job-test-DARKMODE-form-background-input: var(--storyblok-job-test-DARKMODE-color-dark);
+        --storyblok-job-test-DARKMODE-form-fields-border-color: transparent;
+        --storyblok-job-test-DARKMODE-form-error-color: rgb(236, 218, 225);
+        --storyblok-job-test-DARKMODE-form-error-background-color: color-mix(in lab, var(--storyblok-job-test-form-error-color), 35% black);
+        --storyblok-job-test-DARKMODE-standard-shadow-color: rgba(115, 70, 133, 0.2);
+        --storyblok-job-test-DARKMODE-text-gradient: linear-gradient(90deg, var(--storyblok-job-test-DARKMODE-form-accent-color) 0%, var(--storyblok-job-test-DARKMODE-form-accent-color-hover) 100%);
+    }
+
+    /* # Base fallback: if no system preference and no user override → LIGHTMODE */
+    :root {
+        --storyblok-job-test-background-color: var(--storyblok-job-test-LIGHTMODE-background-color);
+        --storyblok-job-test-text-color: var(--storyblok-job-test-LIGHTMODE-text-color);
+        --storyblok-job-test-select-color: var(--storyblok-job-test-LIGHTMODE-select-color);
+        --storyblok-job-test-form-accent-color: var(--storyblok-job-test-LIGHTMODE-form-accent-color);
+        --storyblok-job-test-form-accent-color-hover: var(--storyblok-job-test-LIGHTMODE-form-accent-color-hover);
+        --storyblok-job-test-form-background: var(--storyblok-job-test-LIGHTMODE-form-background);
+        --storyblok-job-test-form-background-input: var(--storyblok-job-test-LIGHTMODE-form-background-input);
+        --storyblok-job-test-form-fields-border-color: var(--storyblok-job-test-LIGHTMODE-form-fields-border-color);
+        --storyblok-job-test-form-error-color: var(--storyblok-job-test-LIGHTMODE-form-error-color);
+        --storyblok-job-test-form-error-background-color: var(--storyblok-job-test-LIGHTMODE-form-error-background-color);
+        --storyblok-job-test-standard-shadow-color: var(--storyblok-job-test-LIGHTMODE-standard-shadow-color);
+        --storyblok-job-test-select-background-color: var(--storyblok-job-test-LIGHTMODE-select-background-color);
+        --storyblok-job-test-text-gradient: var(--storyblok-job-test-LIGHTMODE-text-gradient);
+        --storyblok-job-test-header-color-items: var(--storyblok-job-test-color-canon-light);
+        --storyblok-job-test-header-background: var(--storyblok-job-test-color-canon);
+        --storyblok-job-test-LIGHTMODE-color-canon-text: oklch(from var(--storyblok-job-test-color-canon-text) calc(alpha + 0.8) c h / calc(alpha - 0.1));
+    }
+
+    /* # Auto mode based on system preference */
+    @media (prefers-color-scheme: light) {
+        :root {
+            --storyblok-job-test-background-color: var(--storyblok-job-test-LIGHTMODE-background-color);
+            --storyblok-job-test-text-color: var(--storyblok-job-test-LIGHTMODE-text-color);
+            --storyblok-job-test-select-color: var(--storyblok-job-test-LIGHTMODE-select-color);
+            --storyblok-job-test-form-accent-color: var(--storyblok-job-test-LIGHTMODE-form-accent-color);
+            --storyblok-job-test-form-accent-color-hover: var(--storyblok-job-test-LIGHTMODE-form-accent-color-hover);
+            --storyblok-job-test-form-background: var(--storyblok-job-test-LIGHTMODE-form-background);
+            --storyblok-job-test-form-background-input: var(--storyblok-job-test-LIGHTMODE-form-background-input);
+            --storyblok-job-test-form-fields-border-color: var(--storyblok-job-test-LIGHTMODE-form-fields-border-color);
+            --storyblok-job-test-form-error-color: var(--storyblok-job-test-LIGHTMODE-form-error-color);
+            --storyblok-job-test-form-error-background-color: var(--storyblok-job-test-LIGHTMODE-form-error-background-color);
+            --storyblok-job-test-standard-shadow-color: var(--storyblok-job-test-LIGHTMODE-standard-shadow-color);
+            --storyblok-job-test-select-background-color: var(--storyblok-job-test-LIGHTMODE-select-background-color);
+            --storyblok-job-test-text-gradient: var(--storyblok-job-test-LIGHTMODE-text-gradient);
+            --storyblok-job-test-header-color-items: var(--storyblok-job-test-color-canon-light);
+            --storyblok-job-test-header-background: var(--storyblok-job-test-color-canon);
+            --storyblok-job-test-color-canon-text: oklch(from var(--storyblok-job-test-color-canon-text) calc(alpha + 0.8) c h / calc(alpha - 0.1));
+        }
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --storyblok-job-test-background-color: var(--storyblok-job-test-DARKMODE-background-color);
+            --storyblok-job-test-text-color: var(--storyblok-job-test-DARKMODE-text-color);
+            --storyblok-job-test-select-color: var(--storyblok-job-test-DARKMODE-select-color);
+            --storyblok-job-test-form-accent-color: var(--storyblok-job-test-DARKMODE-form-accent-color);
+            --storyblok-job-test-form-accent-color-hover: var(--storyblok-job-test-DARKMODE-form-accent-color-hover);
+            --storyblok-job-test-form-background: var(--storyblok-job-test-DARKMODE-form-background);
+            --storyblok-job-test-form-background-input: var(--storyblok-job-test-DARKMODE-form-background-input);
+            --storyblok-job-test-form-fields-border-color: var(--storyblok-job-test-DARKMODE-form-fields-border-color);
+            --storyblok-job-test-form-error-color: var(--storyblok-job-test-DARKMODE-form-error-color);
+            --storyblok-job-test-form-error-background-color: var(--storyblok-job-test-DARKMODE-form-error-background-color);
+            --storyblok-job-test-standard-shadow-color: var(--storyblok-job-test-DARKMODE-standard-shadow-color);
+            --storyblok-job-test-select-background-color: var(--storyblok-job-test-DARKMODE-select-background-color);
+            --storyblok-job-test-text-gradient: var(--storyblok-job-test-DARKMODE-text-gradient);
+            --storyblok-job-test-header-color-items: var(--storyblok-job-test-DARKMODE-color-light);
+            --storyblok-job-test-header-background: var(--storyblok-job-test-color-canon);
+        }
+            /* # User forced theme choice */
+        :root[data-theme="light"] {
+            --storyblok-job-test-background-color: var(--storyblok-job-test-LIGHTMODE-background-color);
+            --storyblok-job-test-text-color: var(--storyblok-job-test-LIGHTMODE-text-color);
+            --storyblok-job-test-select-color: var(--storyblok-job-test-LIGHTMODE-select-color);
+            --storyblok-job-test-form-accent-color: var(--storyblok-job-test-LIGHTMODE-form-accent-color);
+            --storyblok-job-test-form-accent-color-hover: var(--storyblok-job-test-LIGHTMODE-form-accent-color-hover);
+            --storyblok-job-test-form-background: var(--storyblok-job-test-LIGHTMODE-form-background);
+            --storyblok-job-test-form-background-input: var(--storyblok-job-test-LIGHTMODE-form-background-input);
+            --storyblok-job-test-form-fields-border-color: var(--storyblok-job-test-LIGHTMODE-form-fields-border-color);
+            --storyblok-job-test-form-error-color: var(--storyblok-job-test-LIGHTMODE-form-error-color);
+            --storyblok-job-test-form-error-background-color: var(--storyblok-job-test-LIGHTMODE-form-error-background-color);
+            --storyblok-job-test-standard-shadow-color: var(--storyblok-job-test-LIGHTMODE-standard-shadow-color);
+            --storyblok-job-test-select-background-color: var(--storyblok-job-test-LIGHTMODE-select-background-color);
+            --storyblok-job-test-text-gradient: var(--storyblok-job-test-LIGHTMODE-text-gradient);
+            --storyblok-job-test-header-color-items: var(--storyblok-job-test-color-canon-light);
+            --storyblok-job-test-header-background: var(--storyblok-job-test-color-canon);
+        }
+    }
+
+
+
+    :root[data-theme="dark"] {
+        --storyblok-job-test-background-color: var(--storyblok-job-test-DARKMODE-background-color);
+        --storyblok-job-test-text-color: var(--storyblok-job-test-DARKMODE-text-color);
+        --storyblok-job-test-select-color: var(--storyblok-job-test-DARKMODE-select-color);
+        --storyblok-job-test-form-accent-color: var(--storyblok-job-test-DARKMODE-form-accent-color);
+        --storyblok-job-test-form-accent-color-hover: var(--storyblok-job-test-DARKMODE-form-accent-color-hover);
+        --storyblok-job-test-form-background: var(--storyblok-job-test-DARKMODE-form-background);
+        --storyblok-job-test-form-background-input: var(--storyblok-job-test-DARKMODE-form-background-input);
+        --storyblok-job-test-form-fields-border-color: var(--storyblok-job-test-DARKMODE-form-fields-border-color);
+        --storyblok-job-test-form-error-color: var(--storyblok-job-test-DARKMODE-form-error-color);
+        --storyblok-job-test-form-error-background-color: var(--storyblok-job-test-DARKMODE-form-error-background-color);
+        --storyblok-job-test-standard-shadow-color: var(--storyblok-job-test-DARKMODE-standard-shadow-color);
+        --storyblok-job-test-select-background-color: var(--storyblok-job-test-DARKMODE-select-background-color);
+        --storyblok-job-test-text-gradient: var(--storyblok-job-test-DARKMODE-text-gradient);
+        --storyblok-job-test-header-color-items: var(--storyblok-job-test-DARKMODE-color-light);
+        --storyblok-job-test-header-background: var(--storyblok-job-test-color-canon-dark);
+    }
+}
