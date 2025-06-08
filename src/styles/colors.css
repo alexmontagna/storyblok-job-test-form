@@ -31,7 +31,7 @@
         --storyblok-job-test-LIGHTMODE-form-error-background-color: color-mix(in lab, var(--storyblok-job-test-form-error-color), 85% white);
         --storyblok-job-test-LIGHTMODE-standard-shadow-color: rgba(115, 70, 133, 0.2);
         --storyblok-job-test-LIGHTMODE-text-gradient: linear-gradient(90deg, var(--storyblok-job-test-LIGHTMODE-form-accent-color) 0%, var(--storyblok-job-test-LIGHTMODE-form-accent-color-hover) 100%);
-        --storyblok-job-test-LIGHTMODE-color-canon-text: oklch(from var(--storyblok-job-test-color-canon-text) calc(alpha + 0.8) c h / calc(alpha - 0.1));
+        --storyblok-job-test-LIGHTMODE-color-canon-text: var(--storyblok-job-test-color-canon-text);
 
         /* Dark mode colors */
         --storyblok-job-test-DARKMODE-color-light: color-mix(in lab, var(--storyblok-job-test-color-canon) 30%, white 70%);
@@ -51,6 +51,7 @@
         --storyblok-job-test-DARKMODE-form-error-background-color: color-mix(in lab, var(--storyblok-job-test-form-error-color), 35% black);
         --storyblok-job-test-DARKMODE-standard-shadow-color: rgba(115, 70, 133, 0.2);
         --storyblok-job-test-DARKMODE-text-gradient: linear-gradient(90deg, var(--storyblok-job-test-DARKMODE-form-accent-color) 0%, var(--storyblok-job-test-DARKMODE-form-accent-color-hover) 100%);
+        --storyblok-job-test-DARKMODE-color-canon-text: oklch(from var(--storyblok-job-test-color-canon-text) calc(l + 0.8) c h / calc(alpha - 0.1));
     }
 
     /* # Base fallback: if no system preference and no user override → LIGHTMODE */
@@ -70,7 +71,6 @@
         --storyblok-job-test-text-gradient: var(--storyblok-job-test-LIGHTMODE-text-gradient);
         --storyblok-job-test-header-color-items: var(--storyblok-job-test-color-canon-light);
         --storyblok-job-test-header-background: var(--storyblok-job-test-color-canon);
-        --storyblok-job-test-LIGHTMODE-color-canon-text: oklch(from var(--storyblok-job-test-color-canon-text) calc(alpha + 0.8) c h / calc(alpha - 0.1));
     }
 
     /* # Auto mode based on system preference */
@@ -91,7 +91,6 @@
             --storyblok-job-test-text-gradient: var(--storyblok-job-test-LIGHTMODE-text-gradient);
             --storyblok-job-test-header-color-items: var(--storyblok-job-test-color-canon-light);
             --storyblok-job-test-header-background: var(--storyblok-job-test-color-canon);
-            --storyblok-job-test-color-canon-text: oklch(from var(--storyblok-job-test-color-canon-text) calc(alpha + 0.8) c h / calc(alpha - 0.1));
         }
     }
 
@@ -112,6 +111,7 @@
             --storyblok-job-test-text-gradient: var(--storyblok-job-test-DARKMODE-text-gradient);
             --storyblok-job-test-header-color-items: var(--storyblok-job-test-DARKMODE-color-light);
             --storyblok-job-test-header-background: var(--storyblok-job-test-color-canon);
+            --storyblok-job-test-color-canon-text: var(--storyblok-job-test-DARKMODE-color-canon-text);
         }
             /* # User forced theme choice */
         :root[data-theme="light"] {
@@ -151,5 +151,6 @@
         --storyblok-job-test-text-gradient: var(--storyblok-job-test-DARKMODE-text-gradient);
         --storyblok-job-test-header-color-items: var(--storyblok-job-test-DARKMODE-color-light);
         --storyblok-job-test-header-background: var(--storyblok-job-test-color-canon-dark);
+        --storyblok-job-test-color-canon-text: var(--storyblok-job-test-DARKMODE-color-canon-text);
     }
 }
