@@ -69,9 +69,10 @@ export async function POST({ request }) {
             );
         }
 
+        const userChoiceMailTo = data.mailto && data.mailto.trim() !== '' ? data.mailto.trim() : CONTACT.MAILTO;
         const result = await resend.emails.send({
             from: `${CONTACT.FROM_NAME} <${CONTACT.FROM_EMAIL}>`,
-            to: [CONTACT.MAILTO],
+            to: [userChoiceMailTo],
             subject: `${data.first_name} ${CONTACT.SUBJECT}`,
             html: `
                 <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">

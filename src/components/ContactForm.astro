@@ -151,10 +151,14 @@ import Button from "./Button.astro";
                 return;
             }
 
+            const runtimeMailto = localStorage.getItem('user-settings-mailto') || '';
             const response = await fetch("/api/submit", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data),
+                body: JSON.stringify({
+                    ...data,
+                    mailto: runtimeMailto,
+                }),
             });
 
             let result;
