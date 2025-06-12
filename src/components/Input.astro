@@ -147,23 +147,8 @@ const {
         outline-color: transparent;
         border-color: var(--storyblok-job-test-form-accent-color);
     }
-
-    input::after {
-        left: 0;
-        right: 0;
-        bottom: 0;
-        content: "";
-        position: absolute;
-        transform: scaleX(0);
-        transition: transform .2s cubic-bezier(0,0,.2,1) 0ms;
-        border-bottom: 2px solid var(--storyblok-job-test-form-accent-color);
-        pointer-events: none;
-    }
-    input:focus::after {
-        content: " ";
-        box-shadow: inset 0 -2px 0 var(--storyblok-job-test-form-accent-color);
-        border-bottom: none;
-        transform: scaleX(1);
+    input#last_name:focus {
+        border-left-color: var(--storyblok-job-test-form-accent-color);
     }
 </style>
 
